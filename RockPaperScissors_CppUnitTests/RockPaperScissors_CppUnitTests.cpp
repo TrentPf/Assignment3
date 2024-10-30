@@ -9,8 +9,11 @@ namespace RockPaperScissorsCppUnitTests
 	{
 	public:
 		
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(GetCharArrays)
 		{
+			//This tests to see if two char arrays are accepted as input
+
+
 		}
 	};
 }
