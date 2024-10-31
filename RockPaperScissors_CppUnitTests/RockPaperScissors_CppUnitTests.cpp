@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 
+extern "C" char* getResult(char* playerOne, char* playerTwo);
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace RockPaperScissorsCppUnitTests
@@ -9,26 +11,59 @@ namespace RockPaperScissorsCppUnitTests
 	{
 	public:
 		
-		TEST_METHOD(GetCharArrays)
+		TEST_METHOD(CheckPlayerOneWin)
 		{
-			//This tests to see if two char arrays are accepted as input
+			//This tests to see if player one wins if they played Rock and player two played paper
 
-			char player1[9] = "Rock";
-			char player2[9] = "Paper";
+			char* player1 = "Paper";
+			char* player2 = "Rock";
 
-			char inputPlayer1[9] = "";
-			char inputPlayer2[9] = "";
+			char* result; 
+			result = getResult(player1, player2);
 
+			Assert::AreEqual("Player1", result);
+		}
 
-			int validity = 0;
+		TEST_METHOD(CheckPlayerTwoWin)
+		{
 
-			if (strncmp(player1, inputPlayer1, sizeof(player1)) == 0) {
-				if (strncmp(player2, inputPlayer2, sizeof(player2)) == 0) {
-					validity = 1;
-				}
-			}
+			//This tests to see if player two wins if they played Paper and player one played Rock
 
-			Assert::AreEqual(validity, 1);
+			char* player1 = "Rock";
+			char* player2 = "Paper";
+
+			char* result;
+			result = getResult(player1, player2);
+
+			Assert::AreEqual("Player2", result);
+		}
+
+		TEST_METHOD(CheckForDraw)
+		{
+
+			//This tests to see if 'Draw' is returned when player one and player two both select scissors
+
+			char* player2 = "Scissors";
+			char* player1 = "Scissors";
+
+			char* result;
+			result = getResult(player1, player2);
+
+			Assert::AreEqual("Draw", result);
+		}
+
+		TEST_METHOD(CheckForInvalid)
+		{
+
+			//This tests to if 'Invalid' is returned when one of player one or two selects an invalid input
+
+			char* player2 = "sdfasdf";
+			char* player1 = "Scissors";
+
+			char* result;
+			result = getResult(player1, player2);
+
+			Assert::AreEqual("Invalid", result);
 		}
 	};
 }

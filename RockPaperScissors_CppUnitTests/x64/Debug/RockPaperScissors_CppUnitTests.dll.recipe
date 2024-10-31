@@ -2,6 +2,9 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+      <FullPath>C:\Users\m1st3\source\repos\Assignment3\x64\Debug\RockPaperScissors.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
       <FullPath>C:\Users\m1st3\source\repos\Assignment3\x64\Debug\RockPaperScissors_CppUnitTests.dll</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
